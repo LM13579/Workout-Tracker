@@ -1,0 +1,497 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at top left, rgba(55, 213, 255, 0.12), transparent 26rem),
+    radial-gradient(circle at top right, rgba(124, 92, 255, 0.14), transparent 22rem),
+    transparent;
+  background-image: url(https://i.pinimg.com/originals/9b/8a/40/9b8a40cd0110f5ed46891d58a5266a58.gif);
+  background-size: cover;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 34px 24px 64px;
+  animation: fadeUp 0.45s ease;
+}
+
+@media (max-width: 720px) {
+  .main {
+    padding: 24px 18px 48px;
+  }
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 74px;
+  padding: 0 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 70%),
+    rgba(4, 11, 22, 0.8);
+  border-bottom: 1px solid rgba(125, 249, 255, 0.12);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.03),
+    0 12px 30px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+}
+
+.navbar-brand {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 16px rgba(125, 249, 255, 0.26);
+}
+
+.navbar-links{
+  display: flex;
+  gap: 10px;
+}
+
+.navbar-links:hover .nav-btn:not(:hover) {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(225, 88, 225, 0.733);
+}
+
+.nav-btn {
+  position: relative;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-muted);
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.nav-btn::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.2) 48%, transparent 65%);
+  transform: translateX(-130%);
+  transition: transform 0.45s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  color: var(--text);
+  border-color: rgba(125, 249, 255, 0.22);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.28),
+    0 0 20px rgba(55, 213, 255, 0.14);
+}
+
+.nav-btn:hover::before {
+  transform: translateX(130%);
+}
+
+.nav-btn.active {
+  background: linear-gradient(135deg, rgba(222, 29, 202, 0.723), rgba(55, 213, 255, 0.08));
+  border-color: rgba(233, 235, 235, 0.667);
+  color: var(--accent);
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.3),
+    0 0 24px rgba(55, 213, 255, 0.22);
+}
+
+.workout-form-card {
+  margin-bottom: 28px;
+  animation: fadeUp 0.45s ease;
+}
+
+.form-title {
+  margin-bottom: 14px;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+@media (max-width: 560px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding: 12px 16px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .navbar-links {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
+
+.workout-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.workout-card {
+  padding: 22px;
+  border: 1px solid rgba(125, 249, 255, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 18%),
+    linear-gradient(135deg, rgba(55, 213, 255, 0.06), transparent 50%, rgba(124, 92, 255, 0.08) 100%),
+    rgba(7, 16, 28, 0.76);
+  box-shadow:
+    0 0 0 1px rgba(125, 249, 255, 0.05),
+    0 18px 38px rgba(0, 0, 0, 0.34);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  animation: fadeUp 0.45s ease both;
+}
+
+.workout-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(125, 249, 255, 0.3);
+  box-shadow:
+    0 0 0 1px rgba(125, 249, 255, 0.1),
+    0 0 28px rgba(55, 213, 255, 0.16),
+    0 26px 48px rgba(0, 0, 0, 0.42);
+}
+
+.workout-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.workout-name {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text);
+}
+
+.workout-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.workout-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.stat strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.stat-sep {
+  color: rgba(125, 249, 255, 0.2);
+}
+
+.workout-notes {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.workout-date {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(140, 163, 191, 0.82);
+}
+
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.exercise-card {
+  position: relative;
+  padding: 22px;
+  border: 1px solid rgba(125, 249, 255, 0.14);
+  background:
+    linear-gradient(180deg, rgba(184, 19, 156, 0.719), transparent 18%),
+    linear-gradient(135deg, rgba(156, 11, 122, 0.718), transparent 55%, rgba(55, 213, 255, 0.08) 100%),
+    rgba(8, 17, 30, 0.78);
+  box-shadow:
+    0 0 0 1px rgba(125, 249, 255, 0.05),
+    0 18px 38px rgba(0, 0, 0, 0.34);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  animation: fadeUp 0.45s ease both;
+}
+
+.exercise-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(125, 249, 255, 0.28);
+  box-shadow:
+    0 0 0 1px rgba(125, 249, 255, 0.1),
+    0 0 28px rgba(124, 92, 255, 0.16),
+    0 24px 46px rgba(0, 0, 0, 0.42);
+}
+
+.exercise-name {
+  margin-bottom: 10px;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text);
+}
+
+.exercise-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid rgba(125, 249, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(125, 249, 255, 0.1);
+  color: var(--accent);
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.workout-card:nth-child(2),
+.exercise-card:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.workout-card:nth-child(3),
+.exercise-card:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.workout-card:nth-child(4),
+.exercise-card:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.workout-card:nth-child(5),
+.exercise-card:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.loading-screen {
+  display: grid;
+  place-items: center;
+  gap: 14px;
+  min-height: 320px;
+  margin-top: 8px;
+  overflow: hidden;
+  text-align: center;
+  animation: fadeUp 0.45s ease;
+}
+
+.loading-screen::before {
+  background:
+    radial-gradient(circle at center, rgba(125, 249, 255, 0.1), transparent 45%),
+    linear-gradient(135deg, rgba(125, 249, 255, 0.08), transparent 45%, rgba(124, 92, 255, 0.12) 100%);
+}
+
+.loading-orb {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+}
+
+.loading-ring,
+.loading-core {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.loading-ring {
+  inset: 0;
+  border: 1px solid rgba(125, 249, 255, 0.2);
+  box-shadow:
+    0 0 18px rgba(55, 213, 255, 0.16),
+    inset 0 0 18px rgba(55, 213, 255, 0.08);
+}
+
+.loading-ring-a {
+  animation: orbitRing 3.2s linear infinite;
+}
+
+.loading-ring-b {
+  inset: 12px;
+  border-color: rgba(124, 92, 255, 0.3);
+  box-shadow:
+    0 0 18px rgba(124, 92, 255, 0.18),
+    inset 0 0 18px rgba(124, 92, 255, 0.1);
+  animation: orbitRingReverse 2.6s linear infinite;
+}
+
+.loading-core {
+  inset: 32px;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(218, 70, 70, 0.8), transparent 24%),
+    radial-gradient(circle, rgba(125, 249, 255, 0.85), rgba(55, 213, 255, 0.16));
+  box-shadow:
+    0 0 18px rgba(125, 249, 255, 0.36),
+    0 0 34px rgba(55, 213, 255, 0.26);
+  animation: pulseCore 1.8s ease-in-out infinite;
+}
+
+.loading-kicker {
+  margin: 0;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.loading-title {
+  margin: 0;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-shadow: 0 0 20px rgba(55, 213, 255, 0.18);
+}
+
+.loading-subtitle {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.loading-bars {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  height: 28px;
+}
+
+.loading-bars span {
+  width: 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent) 0%, rgba(124, 92, 255, 0.9) 100%);
+  box-shadow: 0 0 14px rgba(55, 213, 255, 0.24);
+  animation: equalize 1s ease-in-out infinite;
+}
+
+.loading-bars span:nth-child(1) {
+  height: 12px;
+}
+
+.loading-bars span:nth-child(2) {
+  height: 24px;
+  animation-delay: 0.15s;
+}
+
+.loading-bars span:nth-child(3) {
+  height: 16px;
+  animation-delay: 0.3s;
+}
+
+@keyframes orbitRing {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitRingReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulseCore {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes equalize {
+  0%,
+  100% {
+    transform: scaleY(0.7);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scaleY(1.2);
+    opacity: 1;
+  }
+}
